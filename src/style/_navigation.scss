@@ -1,0 +1,98 @@
+.navigation {
+
+    &__list {
+        display: none;
+        position: absolute;
+        overflow-y: auto;
+        background-color: $main;
+        color: $second;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        padding: 120px 0;
+        text-align: center;
+
+        @include lg {
+            padding: 146px 0;
+        }
+
+        @include xl {
+            position: static;
+            display: flex;
+            align-items: center;
+            height: auto;
+            padding: 0;
+            gap: 8px;
+        }
+    }
+
+    &__item {
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include xl {
+            margin-bottom: 0;
+        }
+    }
+
+    &__link {
+        font-weight: 1000;
+        line-height: 1;
+        font-size: 16px;
+        white-space: nowrap;
+        transition: all .3s ease;
+
+        &:hover,
+        &:focus {
+            color: $back;
+        }
+
+        &_active {
+            color: $back;
+            pointer-events: none;
+        }
+
+        @include xl {
+            display: block;
+            padding: 16px 30px;
+            border: 2px solid #FFAA05;
+            border-radius: 80px;
+
+            &:focus {
+                background-color: $back;
+                color: $second;
+            }
+
+            &_active {
+                color: inherit;
+                pointer-events: none;
+                background-color: $back;
+            }
+        }
+    }
+
+    &__button {
+        display: block;
+        width: 36px;
+        height: 36px;
+        background: url('../img/menu.svg') center/contain no-repeat;
+
+        @include lg {
+            width: 50px;
+            height: 50px;
+        }
+
+        @include xl {
+            display: none;
+        }
+
+        &_active {
+            background-image: url('../img/close.svg');
+        }
+    }
+}

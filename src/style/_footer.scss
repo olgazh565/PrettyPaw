@@ -1,0 +1,83 @@
+.footer {
+    padding: 20px 0 30px;
+
+    @include lg {
+        padding: 60px 0 50px;
+    }
+
+    &__container {
+        @include sm {
+            display: grid;
+            grid-template-columns: repeat(2, max-content);
+            justify-content: space-between;
+            grid-template-areas:
+                'logo socials'
+                'copyright developers';
+            gap: 40px;
+        }
+
+        @include lg {
+            gap: 72px;
+        }
+    }
+
+    &__logo {
+        width: 200px;
+        margin-bottom: 32px;
+
+        @include sm {
+            margin-bottom: 0;
+            grid-area: logo;
+        }
+
+        @include lg {
+            width: 360px;
+        }
+    }
+
+    &__social-list {
+        display: flex;
+        gap: 17px;
+        margin-bottom: 52px;
+
+        @include sm {
+            margin-bottom: 0;
+            grid-area: socials;
+        }
+
+        @include lg {
+            gap: 36px;
+        }
+    }
+
+    &__social-link svg {
+        @include lg {
+            width: 50px;
+        }
+    }
+
+    &__developers {
+        line-height: 1;
+        margin-bottom: 52px;
+
+        @include sm {
+            margin-bottom: 0;
+            grid-area: developers;
+            justify-self: start;
+        }
+    }
+
+    &__developer:not(:last-child) {
+        margin-bottom: 19px;
+
+        @include lg {
+            margin-bottom: 16px;
+        }
+    }
+
+    &__copyright {
+        @include sm {
+            grid-area: copyright;
+        }
+    }
+}

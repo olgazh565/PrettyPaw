@@ -1,0 +1,106 @@
+.career {
+    overflow-x: hidden;
+    padding: 80px 0 40px;
+
+    @include lg {
+        padding: 100px 0  ;
+    }
+
+    &__content {
+        margin-bottom: 40px;
+        display: grid;
+        gap: 24px;
+
+        @include md {
+            grid-template-columns: minmax(528px, 75%) min-content;
+            grid-template-areas: 
+                'title link'
+                'description .';
+            gap: 11px 21px;    
+        }
+
+        @include lg {
+            gap: 27px 31px; 
+            margin-bottom: 50px;
+        }
+
+        @include xl {
+            grid-template-columns: minmax(690px, 50%) 1fr;
+        }
+    }
+
+    &__title {
+        font-size: 32px;
+        font-weight: 1000;
+        line-height: 1;
+        text-transform: uppercase;
+        color: $second;
+
+        @include md {
+            grid-area: title;
+        }    
+
+        @include lg {
+            font-size: 52px;
+        }
+    }
+
+    &__description {
+        @include md {
+            grid-area: description;
+        }
+    }
+
+    &__link {
+        justify-self: start;
+
+        @include md {
+            grid-area: link;
+            align-self: start;
+        }
+        @include xl {
+            justify-self: end;
+        }
+    }
+
+    &__slider {
+        overflow: visible;
+    }
+
+    &__image-item {
+        height: unset;
+        display: flex;
+        align-items: center;
+
+        @include md {
+            &_odd {
+                width: 34%;
+            }
+            
+            &_even {
+                width: 25%;
+            }
+        }
+
+        @include xl {
+            &_odd {
+                width: 27%;
+            }
+            
+            &_even {
+                width: 20%;
+            }
+        }
+    }    
+
+    &__image {
+        border-radius: 16px;
+    }
+
+    &__slider-pagination {
+        @include md {
+            display: none;
+        }
+    }
+}
+
