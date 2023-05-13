@@ -129,21 +129,50 @@ iframe {
   background: $second;
   border-radius: 80px;
   border: 2px solid transparent;
+  // outline: none;
   transition: all .3s ease;
 
   &:hover {
     color: $main;
   }
 
-  &:focus {
-    color: $back;
-    border: 2px solid $main;
+  &:focus:not(:hover) {
+    border-color: $main;
   }
 
   @include lg {
     padding: 17px 32px;
     font-size: 20px;
     gap: 10px;
+  }
+}
+
+.arrow-top {
+  width: 36px;
+  height: 36px;
+  right: 16px;
+  bottom: 30px;
+
+  @include sm {
+    right: 30px;
+  }
+
+  @include lg {
+    width: 50px;
+    height: 50px;
+    bottom: 100px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__svg {
+    width: 12px;
+
+    @include lg {
+      width: 16px;
+    }
   }
 }
 

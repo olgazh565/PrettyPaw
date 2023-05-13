@@ -1,0 +1,48 @@
+.page-nav {
+    display: none;
+
+    @include lg {
+        display: block;
+        position: fixed;
+        top: 216px;
+        left: 30px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        margin-bottom: 24px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__link {
+        display: block;
+        font-weight: 1000;
+        font-size: 16px;
+        line-height: 140%;
+        color: $second;
+        border-radius: 3px;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        transition: color .3s ease-in-out;
+
+        &_active {
+            color: $main;
+            pointer-events: none;
+        }
+
+        &:hover {
+            color: $main
+        }
+
+        &:focus:not(:hover) {
+            outline-color: $second;
+        }
+    }
+}

@@ -7,7 +7,7 @@ export const menuControl = () => {
 
     const tl = gsap.timeline({ paused: true });
 
-    tl.fromTo(navigationList, 
+    tl.fromTo(navigationList,
         { opacity: 0, display: 'none' },
         { opacity: 1, display: 'block' },
 
@@ -15,7 +15,7 @@ export const menuControl = () => {
 
     navigationItems.forEach((elem, i) => {
         const x = i % 2 ? 500 : -500;
-        tl.from(elem, {opacity: 0, x: x, duration: 1}, '-=1')
+        tl.from(elem, { opacity: 0, x: x, duration: 1 }, '-=1')
     });
 
     const openMenu = () => {
@@ -32,7 +32,7 @@ export const menuControl = () => {
     })
 
     navigationButton.addEventListener('click', () => {
-        if (navigationButton.classList.contains('navigation__button_active'))  {
+        if (navigationButton.classList.contains('navigation__button_active')) {
             closeMenu()
         } else {
             openMenu()
@@ -41,16 +41,16 @@ export const menuControl = () => {
 
     const checkScreenSize = (e) => {
         if (e.matches) {
-            gsap.set(navigationList, {opacity: 1, display: 'flex'});
+            gsap.set(navigationList, { opacity: 1, display: 'flex' });
             navigationItems.forEach((elem, i) => {
-                gsap.set(elem, {opacity: 1, x: 0})
+                gsap.set(elem, { opacity: 1, x: 0 })
             });
 
         } else {
-            gsap.set(navigationList, {opacity: 0, display: 'none'});
+            gsap.set(navigationList, { opacity: 0, display: 'none' });
             navigationItems.forEach((elem, i) => {
                 const x = i % 2 ? 500 : -500;
-                gsap.set(elem, {opacity: 0, x: x, duration: 1})
+                gsap.set(elem, { opacity: 0, x: x, duration: 1 })
             });
         }
     };
@@ -60,4 +60,14 @@ export const menuControl = () => {
     mediaQuery.addEventListener('change', checkScreenSize);
 
     checkScreenSize(mediaQuery);
+
+    const navigationLinks = document.querySelectorAll('.navigation__link');
+
+    navigationLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (navigationButton.classList.contains('navigation__button_active')) {
+                closeMenu();
+            }
+        })
+    })
 }

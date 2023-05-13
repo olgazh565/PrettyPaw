@@ -3,7 +3,7 @@
     padding: 80px 0 40px;
 
     @include lg {
-        padding: 100px 0  ;
+        padding: 100px 0;
     }
 
     &__content {
@@ -13,14 +13,14 @@
 
         @include md {
             grid-template-columns: minmax(528px, 75%) min-content;
-            grid-template-areas: 
+            grid-template-areas:
                 'title link'
                 'description .';
-            gap: 11px 21px;    
+            gap: 11px 21px;
         }
 
         @include lg {
-            gap: 27px 31px; 
+            gap: 27px 31px;
             margin-bottom: 50px;
         }
 
@@ -38,7 +38,7 @@
 
         @include md {
             grid-area: title;
-        }    
+        }
 
         @include lg {
             font-size: 52px;
@@ -58,13 +58,20 @@
             grid-area: link;
             align-self: start;
         }
+
         @include xl {
             justify-self: end;
         }
     }
 
+    &__link svg {
+        // overflow: visible;
+    }
+
     &__slider {
-        overflow: visible;
+        @include md {
+            overflow: visible;
+        }
     }
 
     &__image-item {
@@ -72,11 +79,15 @@
         display: flex;
         align-items: center;
 
+        @include sm {
+            width: 48%;
+        }
+
         @include md {
             &_odd {
                 width: 34%;
             }
-            
+
             &_even {
                 width: 25%;
             }
@@ -86,21 +97,20 @@
             &_odd {
                 width: 27%;
             }
-            
+
             &_even {
                 width: 20%;
             }
         }
-    }    
+    }
 
     &__image {
         border-radius: 16px;
     }
 
     &__slider-pagination {
-        @include md {
+        @include sm {
             display: none;
         }
     }
 }
-
