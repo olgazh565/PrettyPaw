@@ -118,7 +118,21 @@
 
             }
         }
+    }
+}
 
+.page__logo {
+    color: $back;
+    border-radius: 1px;
+    outline: 2px solid transparent;
+    outline-offset: 5px;
+    transition: color .3s ease-in-out;
 
+    &:hover {
+        color: $second;
+    }
+
+    &:focus:not(:hover) {
+        outline-color: $second;
     }
 }

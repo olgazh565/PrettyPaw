@@ -1,3 +1,18 @@
+const debounce  = (fn, msec) => {
+    let lastCall = 0;
+    let lastCallTimer = 0;
+
+    return (...arg) => {
+        const prevCall = lastCall;
+        lastCall = Date.now();
+
+        if (prevCall && (lastCall - prevCall) < msec) {
+            clearTimeout(lastCallTimer);
+        }
+
+        lastCallTimer = setTimeout(() => fn(...arg), msec);
+    }
+}
 
 const createArrow = (className, hover = true) => {
     const button = document.createElement('button');
@@ -16,19 +31,32 @@ const createArrow = (className, hover = true) => {
         .${className} {
             position: fixed;
             z-index: 999;
+            right: 30px;
+            bottom: 30px;
             cursor: pointer;
             padding: 0;
+            border: 0;
             background-color: #ffffff;
             box-shadow: 0px 4px 4px rgba(49, 33, 1, 0.15);
             border-radius: 50%;
+            width: 36px;
+            height: 36px;
             justify-content: center;
             align-items: center;
+            display: none;
             color: #000000;
             transition: opacity .3s ease;
+            ${hover && 'transition: opacity .3s ease-in-out'};
         }
+
+        ${hover && `
+            .${className}:hover {
+                opacity: 0.8;
+            }
+        `}
     `;
 
-    document?.body.prepend(style);
+    document?.head.prepend(style);
 
     button.addEventListener('click', () => {
         window.scrollTo({
@@ -48,15 +76,9 @@ export const initScrollTopButton = (className, hover) => {
     const showElemScrollPosition = () => {
         const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-        // if (scrollPosition > window.innerHeight / 2) {
-        //     arrow.style.dispaly = 'flex';
-        // } else {
-        //     arrow.style.dispaly = 'none';
-        // }
-
         arrow.style.display = 
             (scrollPosition > window.innerHeight / 2) ? 'flex' : 'none';
     }
 
-    window.addEventListener('scroll', showElemScrollPosition);
+    window.addEventListener('scroll', debounce(showElemScrollPosition, 100));
 }

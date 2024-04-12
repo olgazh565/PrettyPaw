@@ -16,7 +16,7 @@ import { pageControl } from './modules/pageControl';
 videoBackgroundInit();
 menuControl();
 locationHover();
-initScrollTopButton('arrow-top', false);
+initScrollTopButton('arrow-top', true);
 pageControl();
 
 const careerImageItems = document.querySelectorAll('.career__image-item');
@@ -28,33 +28,40 @@ careerImageItems.forEach((item, i) => {
 slidersInit('.about__slider', {
     pagination: {
         el: '.about__slider-pagination',
-
+        enabled: true,
         //custom pagination
-        // bulletClass: 'about__bullet',
-        // bulletActiveClass: 'about__bullet-active'
+        // bulletClass: '.swiper-pagination-bullet',
+        // bulletActiveClass: '.swiper-pagination-bullet-active'
     }
 });
 
 slidersInit('.career__slider', {
     pagination: {
         el: '.career__slider-pagination',
+        enabled: true,
     },
     breakpoints: {
         576: {
             slidesPerView: 'auto',
             spaceBetween: 20,
-            // pagination: false,
+            pagination: {
+                enabled: false,
+            },
         },
         1024: {
             slidesPerView: 'auto',
             spaceBetween: 26,
-            // pagination: false,
+            pagination: {
+                enabled: false,
+            },
         },
         1240: {
             slidesPerView: 'auto',
             spaceBetween: 30,
-            // pagination: false,
+            pagination: {
+                enabled: false,
+            },
         },
-    }
+    },
 });
 
